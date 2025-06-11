@@ -3,7 +3,7 @@ name: Despliegue a Surge.sh
 on:
   push:
     branches:
-      - master
+      - main 
 
 jobs:
   deploy:
@@ -24,4 +24,5 @@ jobs:
       - name: Hacer despliegue en Surge
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: surge ./ https://<miwebparcial.surge.shnpm install --global surge>.surge.sh --token $SURGE_TOKEN
+        run: |
+          surge ./ https://miwebparcial.surge.sh --token $SURGE_TOKEN
