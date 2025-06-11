@@ -1,0 +1,27 @@
+name: Despliegue a Surge.sh
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v2
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar Surge
+        run: npm install --global surge
+
+      - name: Hacer despliegue en Surge
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: surge ./ https://<miwebparcial.surge.shnpm install --global surge>.surge.sh --token $SURGE_TOKEN
